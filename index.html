@@ -51,6 +51,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-ins
 .avatar{display:flex;justify-content:center}
 .ring{width:min(320px,76vw);aspect-ratio:1;position:relative}
 .ring svg{width:100%;height:100%;filter:drop-shadow(0 0 22px rgba(0,245,212,.45))}
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  border: 3px solid var(--g);
+  box-shadow: 0 0 22px rgba(0,245,212,.45);
+}
 .spin{transform-origin:50% 50%;animation:spin 28s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:860px){.hero-g{grid-template-columns:1fr}.avatar{order:-1}}
@@ -115,7 +124,11 @@ footer .soc{display:flex;gap:18px;justify-content:center;margin-bottom:10px}foot
 <button class="burger" id="bg" aria-label="Menu">☰</button>
 <div class="links" id="lk">
 <a class="l" href="#about">About</a><a class="l" href="#skills">Skills</a><a class="l" href="#flow">ASIC Flow</a><a class="l" href="#projects">Projects</a><a class="l" href="#experience">Experience</a><a class="l" href="#contact">Contact</a>
-<a class="btn" href="#" id="resume">Download Resume</a>
+<a class="btn"
+   href="Gyanaranjan_Rout_Resume.pdf"
+   download="Gyanaranjan_Rout_Resume.pdf">
+   Download Resume
+</a>
 </div></div></nav>
 
 <header class="hero" id="top"><div class="wrap hero-g">
@@ -133,19 +146,8 @@ footer .soc{display:flex;gap:18px;justify-content:center;margin-bottom:10px}foot
 <a class="chip" href="https://github.com/Gyanaranjanrout2006" target="_blank" rel="noopener">⌥ GitHub</a>
 </div></div>
 <div class="avatar"><div class="ring">
-<svg viewBox="0 0 320 320" role="img" aria-label="Avatar with silicon trace border">
-<defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00F5D4"/><stop offset="1" stop-color="#3A86FF"/></linearGradient></defs>
-<g class="spin" fill="none" stroke="url(#gr)" stroke-width="2">
-<circle cx="160" cy="160" r="152" stroke-dasharray="3 9"/>
-<path d="M160 8v22M160 290v22M8 160h22M290 160h22M52 52l16 16M252 252l16 16M268 52l-16 16M68 252l-16 16"/>
-<circle cx="160" cy="8" r="4" fill="#00F5D4"/><circle cx="312" cy="160" r="4" fill="#3A86FF"/><circle cx="160" cy="312" r="4" fill="#00F5D4"/><circle cx="8" cy="160" r="4" fill="#3A86FF"/>
-</g>
-<circle cx="160" cy="160" r="122" fill="#0F1626" stroke="url(#gr)" stroke-width="3"/>
-<g stroke="#00F5D4" stroke-opacity=".25" stroke-width="1"><path d="M60 120h200M60 160h200M60 200h200M120 60v200M160 60v200M200 60v200"/></g>
-<circle cx="160" cy="130" r="34" fill="none" stroke="#00F5D4" stroke-width="3"/>
-<path d="M96 232c6-38 34-56 64-56s58 18 64 56" fill="none" stroke="#3A86FF" stroke-width="3"/>
-<text x="160" y="146" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="30" fill="#00F5D4">GR</text>
-</svg></div></div>
+<img src="profile.jpg" alt="Gyanaranjan Rout"
+     class="profile-photo">
 </div></header>
 
 <section id="about"><div class="wrap rv">
@@ -237,9 +239,6 @@ show(0);
 var lk=$('#lk');$('#bg').onclick=function(){lk.classList.toggle('open')};
 [].forEach.call(lk.querySelectorAll('a'),function(a){a.addEventListener('click',function(){lk.classList.remove('open')})});
 var t=$('#toast'),tm;function toast(x){t.textContent=x;t.classList.add('show');clearTimeout(tm);tm=setTimeout(function(){t.classList.remove('show')},3600)}
-$('#resume').onclick=function(e){e.preventDefault();
-window.location.href='mailto:gyanaranjanrout2006@gmail.com?subject='+encodeURIComponent('Resume request')+'&body='+encodeURIComponent('Hi Gyanaranjan, could you please share your resume?');
-toast('Opening your mail app to request the resume…')};
 $('#send').onclick=function(){var n=$('#n').value.trim(),e=$('#e').value.trim(),m=$('#m').value.trim();
 if(!n||!/^\S+@\S+\.\S+$/.test(e)||!m){toast('Please fill in your name, a valid email and a message.');return}
 window.location.href='mailto:gyanaranjanrout2006@gmail.com?subject='+encodeURIComponent('Portfolio message from '+n)+'&body='+encodeURIComponent(m+'\n\n— '+n+' ('+e+')');
